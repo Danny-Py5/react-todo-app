@@ -59,6 +59,22 @@
 }
 .task__title {
   flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 0.4rem;
+}
+.task__title-p {
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.task__title > time {
+  font-size: small;
+  color: gray;
+  font-style: italic;
 }
 .task__title {
   flex: 2;

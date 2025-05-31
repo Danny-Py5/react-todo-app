@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
 import generateRandomId from "../utils/utils.js";
 
@@ -27,13 +27,16 @@ export default function AddTaskModal() {
         <input
           onChange={(e) => setTaskDescription(() => e.target.value)}
           type="text"
+          value={taskDescription}
           name="task-description"
           id="task-description"
           className="task-description"
           placeholder="Enter you task description"
+          autoFocus
         />
 
         <button
+          disabled={taskDescription.trim() === ""}
           onClick={() => {
             setTasks((pre) => {
               return [
@@ -42,9 +45,11 @@ export default function AddTaskModal() {
                   date: new Date().toDateString(),
                   title: taskDescription,
                   id: generateRandomId(),
+                  dateOBJ: new Date(),
                 },
               ];
             });
+            setTaskDescription("");
             document.getElementById("task-modal").close();
           }}
           className="closeModal"

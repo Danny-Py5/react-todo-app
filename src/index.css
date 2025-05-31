@@ -199,3 +199,7 @@ input:focus {
 .task-description + button {
   margin-top: 1rem;
 }
+.task-description + button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

@@ -67,8 +67,11 @@ export function Task() {
                   </div>
                   <div className="task__child task__title">
                     <span>
-                      <b>{task.title}</b>
+                      <b className="task__title-p">{task.title}</b>
                     </span>
+                    <time time={task.dateOBJ.toLocaleTimeString()}>
+                      {task.dateOBJ.toLocaleTimeString()}
+                    </time>
                   </div>
                   <div className="task__child task__actions">
                     <button className="edit">Edit</button>
