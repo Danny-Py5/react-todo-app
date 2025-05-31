@@ -7,22 +7,26 @@ export default function WelcomeNoTask() {
   const navigate = useNavigate();
 
   return (
-    <div className="welcome">
-      <div className="welcome-body">
-        <p>
-          <strong>There is not Task to in your list</strong>
-        </p>
-        <p>Press the plus button to add task</p>
-        <button
-          onClick={() => {
-            // setAdd((current) => !current);
-            navigate("/task");
-          }}
-          className="addTask"
-        >
-          +
-        </button>
+    <>
+      <div className="welcome">
+        <div className="welcome-body">
+          <p>
+            <strong>There is not Task to in your list</strong>
+          </p>
+          <p>Press the plus button to add task</p>
+          <button
+            onClick={() => {
+              document.getElementById("task-modal").showModal();
+              // navigate("/task");
+            }}
+            className="addTask"
+          >
+            +
+          </button>
+        </div>
       </div>
-    </div>
+
+      <AddTaskModal />
+    </>
   );
 }

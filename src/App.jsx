@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     if (tasks.length > 0) navigate("/task");
-  }, [navigate, tasks.length]);
+  }, [navigate, tasks.length, tasks]);
 
   return (
     <TaskContext.Provider value={{ tasks, setTasks }}>
