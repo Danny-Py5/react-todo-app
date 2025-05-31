@@ -121,6 +121,17 @@ button:hover {
   opacity: 0.7;
 }
 
+input {
+  padding: calc(var(--padding) - 5px) 0.5rem;
+  font: inherit;
+  background-color: var(--background-color-primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: inherit;
+}
+input:focus {
+  outline: none;
+}
 #task-modal[open] {
   display: flex;
   flex-direction: column;
@@ -173,4 +184,18 @@ button:hover {
 }
 .task-modal__header > .closeModal:hover {
   border-color: var(--border-color);
+}
+
+/* task input body  */
+.task-input-body-cont {
+  flex-direction: column;
+  gap: var(--gap);
+  align-items: flex-start !important;
+  padding: var(--padding);
+}
+.task-description {
+  align-self: stretch;
+}
+.task-description + button {
+  margin-top: 1rem;
 }

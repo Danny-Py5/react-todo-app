@@ -36,7 +36,6 @@ export function Task() {
   }
   return (
     <>
-      (
       <div className="task-manager">
         <h1 className="center-text">Task Manager</h1>
 

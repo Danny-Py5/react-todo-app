@@ -4,3 +4,24 @@
 .center-text {
   text-align: center;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-row {
+  flex-direction: row;
+}
+.center--column {
+  flex-direction: column;
+}
+.gap {
+  gap: var(--gap);
+}
+.center--left {
+  justify-content: flex-start;
+}
+.center-column--left {
+  justify-content: flex-start;
+}

@@ -20,32 +20,38 @@ export default function AddTaskModal() {
           <div className="tx tx-2"></div>
         </button>
       </div>
-      <label htmlFor="task-description">Task Description</label>
-      <input
-        onChange={(e) => setTaskDescription(() => e.target.value)}
-        type="text"
-        name="task-description"
-        id="task-description"
-      />
+      <div className="task-input-body-cont center">
+        <label aria-label="task-description" htmlFor="task-description">
+          Task Description
+        </label>
+        <input
+          onChange={(e) => setTaskDescription(() => e.target.value)}
+          type="text"
+          name="task-description"
+          id="task-description"
+          className="task-description"
+          placeholder="Enter you task description"
+        />
 
-      <button
-        onClick={() => {
-          setTasks((pre) => {
-            return [
-              ...pre,
-              {
-                date: new Date().toDateString(),
-                title: taskDescription,
-                id: generateRandomId(),
-              },
-            ];
-          });
-          document.getElementById("task-modal").close();
-        }}
-        className="closeModal"
-      >
-        Save
-      </button>
+        <button
+          onClick={() => {
+            setTasks((pre) => {
+              return [
+                ...pre,
+                {
+                  date: new Date().toDateString(),
+                  title: taskDescription,
+                  id: generateRandomId(),
+                },
+              ];
+            });
+            document.getElementById("task-modal").close();
+          }}
+          className="closeModal"
+        >
+          Save
+        </button>
+      </div>
     </dialog>
   );
 }
