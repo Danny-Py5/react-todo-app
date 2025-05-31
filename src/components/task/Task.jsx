@@ -1,12 +1,20 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AddTaskModal from "./AddTaskModal.jsx";
 import "../../styles/utils.css";
 import "./tasks.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import TaskContext from "../../context/TaskContext.js";
+import WelcomeNoTask from "../welcome/WelcomeNoTask.jsx";
 
 export function Task() {
   const { tasks, setTasks } = useContext(TaskContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (tasks.length <= 0) {
+      navigate("/");
+    }
+  }, [tasks.length, navigate]);
   // console.log(tasks);
 
   function getRandomColor() {
@@ -28,6 +36,7 @@ export function Task() {
   }
   return (
     <>
+      (
       <div className="task-manager">
         <h1 className="center-text">Task Manager</h1>
 
@@ -79,7 +88,6 @@ export function Task() {
           </div>
         </div>
       </div>
-
       <AddTaskModal />
     </>
   );
