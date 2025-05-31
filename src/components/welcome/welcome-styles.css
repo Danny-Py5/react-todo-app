@@ -1,0 +1,29 @@
+.welcome {
+  height: 100%;
+  /* background-color: var(--background-color-transparent); */
+
+  padding-top: 150px;
+}
+
+.user-cont {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  overflow: hidden;
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+.welcome-body {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.addTask {
+  font-size: 2rem;
+  font-weight: 300;
+  padding: 4px 3rem;
+  margin-top: 3rem;
+  border-radius: var(--border-radius);
+}
