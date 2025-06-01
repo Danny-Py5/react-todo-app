@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./welcome-styles.css";
-import AddTaskModal from "../task/AddTaskModal.jsx";
+import TaskModal from "../task/TaskModal.jsx";
 // import { useNavigate } from "react-router-dom";
 
 export default function WelcomeNoTask() {
@@ -26,7 +26,7 @@ export default function WelcomeNoTask() {
         </div>
       </div>
 
-      <AddTaskModal />
+      <TaskModal />
     </>
   );
 }

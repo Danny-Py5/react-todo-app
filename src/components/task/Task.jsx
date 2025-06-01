@@ -1,21 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import AddTaskModal, { taskModalRef } from "./AddTaskModal.jsx";
+import TaskModal, { taskModalRef } from "./TaskModal.jsx";
 import "../../styles/utils.css";
 import "./tasks.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
 // import WelcomeNoTask from "../welcome/WelcomeNoTask.jsx";
 
 export function Task() {
   const { tasks, setTasks } = useContext(TaskContext);
+  const [edit, setEdit] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (tasks.length <= 0) {
       navigate("/");
     }
-    // console.log(taskModalRef);
-  }, [tasks.length, navigate]);
+    if (edit) {
+      taskModalRef.current.showModal();
+    }
+  }, [tasks.length, navigate, edit]);
   // console.log(tasks);
 
   function getRandomColor() {
@@ -38,7 +41,7 @@ export function Task() {
   // console.log(taskModalRef);
   return (
     <>
-      <AddTaskModal />
+      <TaskModal edit={edit} />
       <div className="task-manager">
         <h1 className="center-text">Task Manager</h1>
 
@@ -77,11 +80,20 @@ export function Task() {
                     </time>
                   </div>
                   <div className="task__child task__actions">
-                    <button className="edit">Edit</button>
                     <button
-                      onClick={() =>
-                        setTasks((pre) => pre.filter((p) => p.id !== task.id))
-                      }
+                      className="edit"
+                      onClick={() => {
+                        // setEdit(undefined);
+                        setEdit(() => ({ edit: true, id: task.id }));
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => {
+                        setEdit(undefined);
+                        setTasks((pre) => pre.filter((p) => p.id !== task.id));
+                      }}
                       className="delete"
                     >
                       Delete
