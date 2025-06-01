@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./welcome-styles.css";
 import AddTaskModal from "../task/AddTaskModal.jsx";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function WelcomeNoTask() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>

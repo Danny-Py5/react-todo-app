@@ -1,10 +1,10 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import AddTaskModal from "./AddTaskModal.jsx";
+import { useNavigate } from "react-router-dom";
+import AddTaskModal, { taskModalRef } from "./AddTaskModal.jsx";
 import "../../styles/utils.css";
 import "./tasks.css";
 import { useContext, useEffect } from "react";
 import TaskContext from "../../context/TaskContext.js";
-import WelcomeNoTask from "../welcome/WelcomeNoTask.jsx";
+// import WelcomeNoTask from "../welcome/WelcomeNoTask.jsx";
 
 export function Task() {
   const { tasks, setTasks } = useContext(TaskContext);
@@ -14,6 +14,7 @@ export function Task() {
     if (tasks.length <= 0) {
       navigate("/");
     }
+    // console.log(taskModalRef);
   }, [tasks.length, navigate]);
   // console.log(tasks);
 
@@ -34,8 +35,10 @@ export function Task() {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   }
+  // console.log(taskModalRef);
   return (
     <>
+      <AddTaskModal />
       <div className="task-manager">
         <h1 className="center-text">Task Manager</h1>
 
@@ -43,7 +46,7 @@ export function Task() {
           <div className="tasks__header">
             <button
               onClick={() => {
-                document.getElementById("task-modal").showModal();
+                taskModalRef.current.showModal();
               }}
             >
               Add Task
@@ -90,7 +93,6 @@ export function Task() {
           </div>
         </div>
       </div>
-      <AddTaskModal />
     </>
   );
 }

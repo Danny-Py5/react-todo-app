@@ -1,20 +1,27 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
 import generateRandomId from "../utils/utils.js";
+
+export let taskModalRef = null;
 
 export default function AddTaskModal() {
   const { setTasks } = useContext(TaskContext);
   const [taskDescription, setTaskDescription] = useState("");
+  const _taskModalRef = useRef();
+
+  useEffect(() => {
+    taskModalRef = _taskModalRef;
+  }, []);
 
   return (
-    <dialog id="task-modal">
+    <dialog ref={_taskModalRef} id="task-modal">
       <div className="task-modal__header">
         <p>
           <strong>Add Task</strong>
         </p>
         <button
           className="closeModal"
-          onClick={() => document.getElementById("task-modal").close()}
+          onClick={() => _taskModalRef.current.close()}
         >
           <div className="tx tx-1"></div>
           <div className="tx tx-2"></div>
@@ -50,7 +57,7 @@ export default function AddTaskModal() {
               ];
             });
             setTaskDescription("");
-            document.getElementById("task-modal").close();
+            _taskModalRef.current.close();
           }}
           className="closeModal"
         >
