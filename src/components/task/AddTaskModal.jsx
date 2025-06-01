@@ -38,7 +38,7 @@ export default function AddTaskModal() {
           name="task-description"
           id="task-description"
           className="task-description"
-          placeholder="Enter you task description"
+          placeholder="Enter your task description"
           autoFocus
         />
 
