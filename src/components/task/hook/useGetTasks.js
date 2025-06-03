@@ -22,13 +22,3 @@ const tasks = [
 export default function useGetTasks() {
   return tasks;
 }
-export function getTask(id) {
-  let matchingId;
-
-  tasks.forEach((task) => {
-    if (task.id === id) {
-      matchingId = task;
-    }
-  });
-  return matchingId;
-}

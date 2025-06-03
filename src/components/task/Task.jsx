@@ -49,6 +49,7 @@ export function Task() {
           <div className="tasks__header">
             <button
               onClick={() => {
+                setEdit(undefined);
                 taskModalRef.current.showModal();
               }}
             >

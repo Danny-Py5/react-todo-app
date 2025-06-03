@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [tasks, setTasks] = useState(useGetTasks());
   const navigate = useNavigate();
-  console.log(tasks);
+  // console.log(tasks);
 
   useEffect(() => {
     if (tasks.length > 0) navigate("/task");

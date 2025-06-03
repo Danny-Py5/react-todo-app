@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
 import generateRandomId from "../utils/utils.js";
-import { getTask } from "./hook/useGetTasks.js";
 
 export let taskModalRef = null;
 
@@ -12,7 +11,7 @@ export default function TaskModal({ edit }) {
 
   useEffect(() => {
     taskModalRef = _taskModalRef;
-    console.log(tasks);
+    // console.log(tasks);
   }, [tasks]);
 
   return (
@@ -34,9 +33,11 @@ export default function TaskModal({ edit }) {
           </div>
 
           <div className="task-input-body-cont center">
-            <p>
-              <b>Title: {getTask(edit.id).title} </b>
-              <span>{edit.title}</span>
+            <p style={{ wordBreak: "break-all" }}>
+              <b>Title: </b>
+              <span>
+                {tasks.find((task) => task.id === edit.id)?.title || ""}
+              </span>
             </p>
             <label aria-label="task-description" htmlFor="task-description">
               Task Description
@@ -48,7 +49,7 @@ export default function TaskModal({ edit }) {
               name="task-description"
               id="task-description"
               className="task-description"
-              placeholder="Enter your task description"
+              placeholder="Enter something to edit task"
               autoFocus
             />
 
@@ -63,15 +64,6 @@ export default function TaskModal({ edit }) {
                     }
                     return task;
                   });
-                  // return [
-                  //   ...current,
-                  //   {
-                  //     date: new Date().toDateString(),
-                  //     title: taskDescription,
-                  //     id: generateRandomId(),
-                  //     dateOBJ: new Date(),
-                  //   },
-                  // ];
                 });
                 setTaskDescription("");
                 _taskModalRef.current.close();
