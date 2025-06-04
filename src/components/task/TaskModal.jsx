@@ -1,6 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
 import generateRandomId from "../utils/utils.js";
+import { saveToLocalStorage } from "./hook/useGetTasks.js";
+import { truncateOne } from "../../styles/utils.module.css";
+console.log(truncateOne);
 
 export let taskModalRef = null;
 
@@ -11,6 +14,7 @@ export default function TaskModal({ edit }) {
 
   useEffect(() => {
     taskModalRef = _taskModalRef;
+
     // console.log(tasks);
   }, [tasks]);
 
@@ -33,7 +37,7 @@ export default function TaskModal({ edit }) {
           </div>
 
           <div className="task-input-body-cont center">
-            <p style={{ wordBreak: "break-all" }}>
+            <p className={truncateOne} style={{ wordBreak: "break-all" }}>
               <b>Title: </b>
               <span>
                 {tasks.find((task) => task.id === edit.id)?.title || ""}
@@ -67,6 +71,7 @@ export default function TaskModal({ edit }) {
                 });
                 setTaskDescription("");
                 _taskModalRef.current.close();
+                saveToLocalStorage(tasks);
               }}
             >
               Update
@@ -107,23 +112,23 @@ export default function TaskModal({ edit }) {
             <button
               disabled={taskDescription.trim() === ""}
               onClick={() => {
+                const newTask = {
+                  date: new Date().toDateString(),
+                  title: taskDescription,
+                  id: generateRandomId(),
+                  dateOBJ: new Date(),
+                };
+
+                saveToLocalStorage([...tasks, newTask]);
                 setTasks((current) => {
-                  return [
-                    ...current,
-                    {
-                      date: new Date().toDateString(),
-                      title: taskDescription,
-                      id: generateRandomId(),
-                      dateOBJ: new Date(),
-                    },
-                  ];
+                  return [...current, newTask];
                 });
                 setTaskDescription("");
                 _taskModalRef.current.close();
               }}
               className="closeModal"
             >
-              Save
+              Add
             </button>
           </div>
         </dialog>

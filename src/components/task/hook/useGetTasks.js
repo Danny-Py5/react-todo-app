@@ -20,5 +20,16 @@ const tasks = [
 ];
 
 export default function useGetTasks() {
-  return tasks;
+  // return tasks;
+  return JSON.parse(localStorage.getItem("tasks"), (key, value) => {
+    if (key === "dateOBJ") {
+      return new Date(value);
+    }
+    return value;
+  });
+}
+
+export function saveToLocalStorage(tasks) {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  console.log("tasks saved!");
 }

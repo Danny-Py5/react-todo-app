@@ -4,6 +4,7 @@ import "../../styles/utils.css";
 import "./tasks.css";
 import { useContext, useEffect, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
+import { saveToLocalStorage } from "./hook/useGetTasks.js";
 // import WelcomeNoTask from "../welcome/WelcomeNoTask.jsx";
 
 export function Task() {
@@ -93,7 +94,12 @@ export function Task() {
                     <button
                       onClick={() => {
                         setEdit(undefined);
-                        setTasks((pre) => pre.filter((p) => p.id !== task.id));
+                        saveToLocalStorage(
+                          tasks.filter((tk) => tk.id !== task.id)
+                        );
+                        setTasks((current) =>
+                          current.filter((tk) => tk.id !== task.id)
+                        );
                       }}
                       className="delete"
                     >
