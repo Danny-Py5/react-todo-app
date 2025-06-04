@@ -5,6 +5,10 @@ import "./tasks.css";
 import { useContext, useEffect, useState } from "react";
 import TaskContext from "../../context/TaskContext.js";
 import { saveToLocalStorage } from "./hook/useGetTasks.js";
+// Font awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+
 // import WelcomeNoTask from "../welcome/WelcomeNoTask.jsx";
 
 export function Task() {
@@ -89,7 +93,7 @@ export function Task() {
                         setEdit(() => ({ edit: true, id: task.id }));
                       }}
                     >
-                      Edit
+                      <FontAwesomeIcon icon={faEdit} />
                     </button>
                     <button
                       onClick={() => {
@@ -103,7 +107,7 @@ export function Task() {
                       }}
                       className="delete"
                     >
-                      Delete
+                      <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </div>
                 </div>

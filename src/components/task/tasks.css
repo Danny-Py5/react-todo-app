@@ -79,3 +79,11 @@
 .task__title {
   flex: 2;
 }
+
+.edit,
+.delete {
+  border: none;
+  background-color: #0000;
+  /* padding: var(--padding-sm); */
+  padding: 8px;
+}
