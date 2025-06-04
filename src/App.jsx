@@ -1,5 +1,6 @@
 import "./App.css";
 import "./styles/utils.css";
+import History from "./components/history/History.jsx";
 import Header from "./components/header/Header.jsx";
 import WelcomeNoTask from "./components/welcome/WelcomeNoTask.jsx";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -22,9 +23,9 @@ function App() {
     <TaskContext.Provider value={{ tasks, setTasks }}>
       <>
         <Header />
-
         <Outlet />
       </>
+      {/* <History /> */}
     </TaskContext.Provider>
   );
 }

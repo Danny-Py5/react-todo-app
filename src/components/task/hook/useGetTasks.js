@@ -21,12 +21,14 @@ const tasks = [
 
 export default function useGetTasks() {
   // return tasks;
-  return JSON.parse(localStorage.getItem("tasks"), (key, value) => {
-    if (key === "dateOBJ") {
-      return new Date(value);
-    }
-    return value;
-  });
+  return (
+    JSON.parse(localStorage.getItem("tasks"), (key, value) => {
+      if (key === "dateOBJ") {
+        return new Date(value);
+      }
+      return value;
+    }) || []
+  );
 }
 
 export function saveToLocalStorage(tasks) {
