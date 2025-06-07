@@ -7,7 +7,7 @@ export default function Header() {
       </p>
       <div className="user-cont">
         <img
-          src="./src/components/welcome/user.jpg"
+          src="/src/components/welcome/user.jpg"
           width={100}
           height={200}
           alt="user"
