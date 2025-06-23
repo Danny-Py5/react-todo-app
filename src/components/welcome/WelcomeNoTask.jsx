@@ -11,7 +11,7 @@ export default function WelcomeNoTask() {
       <div className="welcome">
         <div className="welcome-body">
           <p>
-            <strong>There is not Task in your list</strong>
+            <strong>There is no Task in your list</strong>
           </p>
           <p>Press the plus button to add task</p>
           <button
