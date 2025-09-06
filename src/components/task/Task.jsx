@@ -65,7 +65,7 @@ export function Task() {
           <div className="tasks__body">
             {tasks.map((task) => {
               return (
-                <div key={task.id} className="task">
+                <div key={task.id} className={"task"}>
                   <div
                     style={{
                       backgroundColor: getRandomColor(),
@@ -78,8 +78,8 @@ export function Task() {
                     <span className="date">{task.date.split(" ")[2]}</span>
                   </div>
                   <div className="task__child task__title">
-                    <span>
-                      <b className="task__title-p">{task.title}</b>
+                    <span className="task__title-p truncate-1">
+                      {task.title}
                     </span>
                     <time time={task.dateOBJ.toLocaleTimeString()}>
                       {task.dateOBJ.toLocaleTimeString()}

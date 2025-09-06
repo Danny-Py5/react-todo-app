@@ -33,11 +33,12 @@
   height: 100%;
 }
 .task {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   background-color: #181818e3;
   padding: calc(var(--padding) / 2);
   column-gap: var(--gap);
-  max-height: 70px;
+  transition: all 1s ease-in;
+  height: 70px;
 }
 .task__child {
   /* flex: 1; */
@@ -65,11 +66,7 @@
   padding-left: 0.4rem;
 }
 .task__title-p {
-  word-break: break-all;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  cursor: pointer;
 }
 .task__title > time {
   font-size: small;
